@@ -7,6 +7,9 @@ namespace ActivationTroubleshooter.Library.Tools
 {
     public class Starter
     {
+        public static void Run(string s)
+            => Run(System.Text.Json.JsonSerializer.Deserialize<MainModel>(s));
+
         public static void Run(MainModel mm)
         {
             var dic = Helper.ConvertToDic(mm);
