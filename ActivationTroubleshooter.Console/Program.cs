@@ -48,7 +48,9 @@ namespace ActivationTroubleshooter.Console
             );
             // System.Console.WriteLine(ms.ToJson());
             // System.Console.ReadLine();
-            new Starter(ms).Run();
+            new Starter(ms)
+                .PrintTitle()
+                .Run();
         }
 
 
