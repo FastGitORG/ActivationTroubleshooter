@@ -10,12 +10,12 @@ namespace ActivationTroubleshooter.Console
     {
         static void Main(string[] args)
         {
-            MainModel ms = new MainModel()
+            MainModel u = new MainModel()
             {
                 StartId = "start",
             };
 
-            ms.Items.Add(
+            u.Items.Add(
                 new ItemModel()
                 {
                     Message = "No1",
@@ -31,7 +31,7 @@ namespace ActivationTroubleshooter.Console
                 }
             );
 
-            ms.Items.Add(
+            u.Items.Add(
                 new ItemModel()
                 {
                     Message = "No2",
@@ -48,7 +48,7 @@ namespace ActivationTroubleshooter.Console
             );
             // System.Console.WriteLine(ms.ToJson());
             // System.Console.ReadLine();
-            new Starter(ms)
+            new Starter(u)
                 .PrintTitle()
                 .Run();
         }
