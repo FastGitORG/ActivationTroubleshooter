@@ -49,8 +49,30 @@ namespace ActivationTroubleshooter.Console
 
             System.Console.WriteLine(u.ToJson());
 
+            var s = new ShitBuilder()
+                .SetTitle("Hello")
+                .SetStartId("Start")
+                .AddItem(new ItemBuilder()
+                    .SetId("Start")
+                    .SetMessage("This is the first message")
+                    .AddChoice(new ChoiceBuilder()
+                        .SetMessage("First Choice")
+                        .SetNextId("Step2")
+                    )
+                )
+                .AddItem(new ItemBuilder()
+                    .SetId("Step2")
+                    .SetMessage("This is the second message")
+                    .AddChoice(new ChoiceBuilder()
+                        .SetMessage("First Choice")
+                    )
+                    .AddChoice(new ChoiceBuilder()
+                        .SetMessage("Second Choice")
+                    )
+                );
+
             // System.Console.ReadLine();
-            new Starter(u)
+            new Starter(s)
                 .PrintTitle()
                 .EnsureValid()
                 .Run();

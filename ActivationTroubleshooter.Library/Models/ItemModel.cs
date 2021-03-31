@@ -8,6 +8,6 @@ namespace ActivationTroubleshooter.Library.Models
 
         public string Message { get; set; }
 
-        public List<ChoiceModel> Choices { get; set; }
+        public List<ChoiceModel> Choices { get; set; } = new List<ChoiceModel>();
     }
 }
