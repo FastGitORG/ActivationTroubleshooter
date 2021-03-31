@@ -7,19 +7,39 @@ namespace ActivationTroubleshooter.Library.Tools
 {
     public class Starter
     {
-        public static void Run(string s)
-            => Run(System.Text.Json.JsonSerializer.Deserialize<MainModel>(s));
+        private MainModel _mm;
 
-        public static void Run(MainModel mm)
+        public Starter()
         {
-            var dic = Helper.ConvertToDic(mm);
-            if (!dic.ContainsKey(mm.StartId))
+
+        }
+
+        public Starter(string s)
+        {
+            _mm = System.Text.Json.JsonSerializer.Deserialize<MainModel>(s);
+        }
+
+        public Starter(MainModel mm)
+        {
+            _mm = mm;
+        }
+
+
+        public void Run()
+        {
+            if (_mm is null)
+            {
+                Console.Error.WriteLine("You haven't iniliase mainmodel");
+                return;
+            }
+            var dic = Helper.ConvertToDic(_mm);
+            if (!dic.ContainsKey(_mm.StartId))
             {
                 Console.Error.WriteLine("Cannot find start pointer!");
                 return;
             }
             ItemModel im;
-            string nextId = mm.StartId;
+            string nextId = _mm.StartId;
 
             while (!string.IsNullOrEmpty(nextId))
             {
