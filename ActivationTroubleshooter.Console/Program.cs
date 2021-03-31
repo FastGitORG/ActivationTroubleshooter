@@ -52,6 +52,7 @@ namespace ActivationTroubleshooter.Console
             // System.Console.ReadLine();
             new Starter(u)
                 .PrintTitle()
+                .EnsureValid()
                 .Run();
         }
 

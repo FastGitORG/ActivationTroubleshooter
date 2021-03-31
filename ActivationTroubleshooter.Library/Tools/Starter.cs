@@ -8,6 +8,7 @@ namespace ActivationTroubleshooter.Library.Tools
     public class Starter
     {
         private MainModel _mm;
+        private Dictionary<string, ItemModel> _dic;
         private bool _printTitle = true;
 
         #region Constructors
@@ -34,20 +35,18 @@ namespace ActivationTroubleshooter.Library.Tools
         }
 
         public Starter ChangeItem(string s)
-        {
-            _mm = System.Text.Json.JsonSerializer.Deserialize<MainModel>(s);
-            return this;
-        }
+            => ChangeItem(System.Text.Json.JsonSerializer.Deserialize<MainModel>(s));
 
         public Starter ChangeItem(MainModel mm)
         {
             _mm = mm;
+            _dic = Helper.ConvertToDic(_mm);
             return this;
         }
 
         public void Run()
         {
-            if (_mm is null)
+            if (_mm is null || _dic is null)
             {
                 Console.Error.WriteLine("You haven't iniliase mainmodel");
                 return;
@@ -58,9 +57,7 @@ namespace ActivationTroubleshooter.Library.Tools
                 Console.WriteLine(_mm.Name);
             }
 
-
-            var dic = Helper.ConvertToDic(_mm);
-            if (!dic.ContainsKey(_mm.StartId))
+            if (!_dic.ContainsKey(_mm.StartId))
             {
                 Console.Error.WriteLine("Cannot find start pointer!");
                 return;
@@ -70,13 +67,20 @@ namespace ActivationTroubleshooter.Library.Tools
 
             while (!string.IsNullOrEmpty(nextId))
             {
-                im = dic[nextId];
+                im = _dic[nextId];
                 Console.WriteLine(im.Message);
                 nextId = GetNextId(im.Choices);
             }
         }
 
-        public static string GetNextId(List<ChoiceModel> l)
+        public Starter EnsureValid()
+        {
+            if (!Helper.Verify(_dic))
+                throw new Exception("Invalid"); // TODO: Change to correct exp.
+            return this;
+        }
+
+        private static string GetNextId(List<ChoiceModel> l)
         {
             int ii = 0;
             foreach (var i in l)
