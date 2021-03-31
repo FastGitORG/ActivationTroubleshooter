@@ -8,7 +8,9 @@ namespace ActivationTroubleshooter.Library.Tools
     public class Starter
     {
         private MainModel _mm;
+        private bool _printTitle = true;
 
+        #region Constructors
         public Starter()
         {
 
@@ -16,14 +18,32 @@ namespace ActivationTroubleshooter.Library.Tools
 
         public Starter(string s)
         {
-            _mm = System.Text.Json.JsonSerializer.Deserialize<MainModel>(s);
+            ChangeItem(s);
         }
 
         public Starter(MainModel mm)
         {
-            _mm = mm;
+            ChangeItem(mm);
+        }
+        #endregion
+
+        public Starter PrintTitle(bool isPrint = true)
+        {
+            _printTitle = isPrint;
+            return this;
         }
 
+        public Starter ChangeItem(string s)
+        {
+            _mm = System.Text.Json.JsonSerializer.Deserialize<MainModel>(s);
+            return this;
+        }
+
+        public Starter ChangeItem(MainModel mm)
+        {
+            _mm = mm;
+            return this;
+        }
 
         public void Run()
         {
@@ -32,6 +52,13 @@ namespace ActivationTroubleshooter.Library.Tools
                 Console.Error.WriteLine("You haven't iniliase mainmodel");
                 return;
             }
+
+            if (_printTitle)
+            {
+                Console.WriteLine(_mm.Name);
+            }
+
+
             var dic = Helper.ConvertToDic(_mm);
             if (!dic.ContainsKey(_mm.StartId))
             {
