@@ -1,9 +1,8 @@
-﻿using ActivationTroubleshooter.Library.Models;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
+using ActivationTroubleshooter.Library.Models;
 
-namespace ActivationTroubleshooter.Library.Tools
+namespace ActivationTroubleshooter.Library.Builder
 {
     public class Starter
     {

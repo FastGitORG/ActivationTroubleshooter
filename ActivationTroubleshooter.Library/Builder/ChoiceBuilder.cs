@@ -1,14 +1,11 @@
 ﻿using ActivationTroubleshooter.Library.Models;
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ActivationTroubleshooter.Library.Tools
+namespace ActivationTroubleshooter.Library.Builder
 {
     public class ChoiceBuilder
     {
         private ChoiceModel _cm;
+
         public ChoiceBuilder()
         {
             _cm = new ChoiceModel();
@@ -22,12 +19,16 @@ namespace ActivationTroubleshooter.Library.Tools
             _cm.NextId = id;
             return this;
         }
+
         public ChoiceBuilder SetMessage(string msg)
         {
             _cm.ChoiceMessage = msg;
             return this;
         }
-        public static implicit operator ChoiceModel(ChoiceBuilder cb) => cb._cm;
 
+        public ChoiceModel ToChoiceModel()
+            => _cm;
+
+        public static implicit operator ChoiceModel(ChoiceBuilder cb) => cb._cm;
     }
 }

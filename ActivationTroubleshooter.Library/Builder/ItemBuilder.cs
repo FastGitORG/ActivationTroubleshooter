@@ -1,6 +1,6 @@
 ﻿using ActivationTroubleshooter.Library.Models;
 
-namespace ActivationTroubleshooter.Library.Tools
+namespace ActivationTroubleshooter.Library.Builder
 {
     public class ItemBuilder
     {
@@ -36,6 +36,5 @@ namespace ActivationTroubleshooter.Library.Tools
             => _im;
 
         public static implicit operator ItemModel(ItemBuilder ib) => ib._im;
-
     }
 }

@@ -1,38 +1,34 @@
 ﻿using ActivationTroubleshooter.Library.Models;
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ActivationTroubleshooter.Library.Tools
+namespace ActivationTroubleshooter.Library.Builder
 {
-    public class ShitBuilder
+    public class MainModelBuilder
     {
         private MainModel _mm;
 
-        public ShitBuilder()
+        public MainModelBuilder()
         {
             _mm = new MainModel();
         }
 
-        public ShitBuilder SetTitle(string tt)
+        public MainModelBuilder SetTitle(string tt)
         {
             _mm.Name = tt;
             return this;
         }
 
-        public ShitBuilder SetStartId(string sid)
+        public MainModelBuilder SetStartId(string sid)
         {
             _mm.StartId = sid;
             return this;
         }
 
-        public ShitBuilder AddItem(ItemBuilder ib)
+        public MainModelBuilder AddItem(ItemBuilder ib)
         {
             return AddItem((ItemModel)ib);
         }
 
-        public ShitBuilder AddItem(ItemModel im)
+        public MainModelBuilder AddItem(ItemModel im)
         {
             _mm.Items.Add(im);
             return this;
@@ -44,6 +40,6 @@ namespace ActivationTroubleshooter.Library.Tools
         public Starter ToStarter()
             => new Starter(_mm);
 
-        public static implicit operator MainModel(ShitBuilder sb) => sb._mm;
+        public static implicit operator MainModel(MainModelBuilder sb) => sb._mm;
     }
 }

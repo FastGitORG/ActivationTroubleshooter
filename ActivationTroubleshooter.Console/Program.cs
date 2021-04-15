@@ -1,8 +1,7 @@
 ﻿using ActivationTroubleshooter.Library;
 using ActivationTroubleshooter.Library.Models;
-using ActivationTroubleshooter.Library.Tools;
-
 using System.Collections.Generic;
+using ActivationTroubleshooter.Library.Builder;
 
 namespace ActivationTroubleshooter.Console
 {
@@ -49,7 +48,7 @@ namespace ActivationTroubleshooter.Console
 
             System.Console.WriteLine(u.ToJson());
 
-            var s = new ShitBuilder()
+            var s = new MainModelBuilder()
                 .SetTitle("Hello")
                 .SetStartId("Start")
                 .AddItem(new ItemBuilder()
