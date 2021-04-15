@@ -1,4 +1,4 @@
-﻿namespace ActivationTroubleshooter.Library.Models
+﻿namespace LinkedQuestion.Library.Models
 {
     public class ChoiceModel
     {

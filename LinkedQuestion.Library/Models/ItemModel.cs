@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ActivationTroubleshooter.Library.Models
+namespace LinkedQuestion.Library.Models
 {
     public class ItemModel
     {

@@ -1,8 +1,8 @@
-﻿using ActivationTroubleshooter.Library.Models;
+﻿using LinkedQuestion.Library.Models;
 
 using System.Collections.Generic;
 
-namespace ActivationTroubleshooter.Library
+namespace LinkedQuestion.Library
 {
     public class Helper
     {

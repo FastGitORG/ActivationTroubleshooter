@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using ActivationTroubleshooter.Library.Models;
+using LinkedQuestion.Library.Models;
 
-namespace ActivationTroubleshooter.Library.Builder
+namespace LinkedQuestion.Library.Builder
 {
     public class Starter
     {

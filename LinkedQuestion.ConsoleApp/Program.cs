@@ -1,9 +1,8 @@
-﻿using ActivationTroubleshooter.Library;
-using ActivationTroubleshooter.Library.Models;
+﻿using LinkedQuestion.Library.Models;
 using System.Collections.Generic;
-using ActivationTroubleshooter.Library.Builder;
+using LinkedQuestion.Library.Builder;
 
-namespace ActivationTroubleshooter.Console
+namespace LinkedQuestion.ConsoleApp
 {
     class Program
     {
@@ -23,7 +22,7 @@ namespace ActivationTroubleshooter.Console
                     {
                         new ChoiceModel()
                         {
-                            ChoiceMessage  = "MSG",
+                            ChoiceMessage = "MSG",
                             NextId = "No2"
                         }
                     }
@@ -39,7 +38,7 @@ namespace ActivationTroubleshooter.Console
                     {
                         new ChoiceModel()
                         {
-                            ChoiceMessage  = "MSG2",
+                            ChoiceMessage = "MSG2",
                             NextId = null
                         }
                     }
@@ -76,7 +75,5 @@ namespace ActivationTroubleshooter.Console
                 .EnsureValid()
                 .Run();
         }
-
-
     }
 }
